@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: #fafafa;
+}
+
+.screen-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mobile-card {
+  width: 360px;
+  padding: 24px;
+  background: #fff;
+}
