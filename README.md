@@ -168,4 +168,3 @@ This project was built as an assignment submission
 Backend integration can be easily added in future
 
 Structure and logic are designed to scale
-
