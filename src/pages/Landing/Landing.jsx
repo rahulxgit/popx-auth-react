@@ -1,27 +1,45 @@
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import illustration from "../../assets/images/popx-illustration.svg";
-import "./landing.css";
+
+import { Button } from "../../components/ui/Button";
 
 const Landing = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="screen-wrapper">
-      <div className="mobile-card">
-        <img src={illustration} alt="PopX" className="hero-img" />
+    <motion.div className="min-h-screen flex flex-col items-center justify-end bg-background px-4 pb-12">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="w-full max-w-md space-y-6"
+      >
+        <motion.div className="space-y-4">
+          <h1 className="text-3xl font-bold text-foreground">
+            Welcome to PopX
+          </h1>
+          <p className="text-muted-foreground text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          </p>
+        </motion.div>
 
-        <h2>Welcome to PopX</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-        <button className="primary-btn" onClick={() => navigate("/register")}>
-          Create Account
-        </button>
-
-        <button className="secondary-btn" onClick={() => navigate("/login")}>
-          Already Registered? Login
-        </button>
-      </div>
-    </div>
+        <motion.div className="flex flex-col gap-4 mt-8">
+          <Button
+            onClick={() => navigate("/register")}
+            className="w-full h-12 text-md font-semibold bg-primary text-primary-foreground hover:bg-primary/90"
+          >
+            Create Account
+          </Button>
+          <Button
+            onClick={() => navigate("/login")}
+            variant="secondary"
+            className="w-full h-12 text-md font-semibold bg-primary/20 text-primary hover:bg-primary/30"
+          >
+            Already Registered? Login
+          </Button>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 };
 
