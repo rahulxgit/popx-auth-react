@@ -1,0 +1,80 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="React architecture flowchart">
+  <style>
+    .title { font: 600 20px/1.2 Arial, Helvetica, sans-serif; fill: #0f172a }
+    .box { fill: #e6eefc; stroke: #2791ff; stroke-width: 2 }
+    .small { font: 14px/1.2 Arial, Helvetica, sans-serif; fill: #0f172a }
+    .arrow { stroke: #0f172a; stroke-width: 2; fill: none; marker-end: url(#arrowhead) }
+    .note { font: 12px/1.2 Arial, Helvetica, sans-serif; fill: #334155 }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="36" class="title">React architecture — render & update flow</text>
+
+  <!-- JSX / Elements -->
+  <rect x="40" y="60" width="260" height="64" rx="8" class="box"/>
+  <text x="60" y="98" class="small">JSX / React Elements</text>
+  <text x="60" y="116" class="note">(declarative UI description)</text>
+
+  <!-- Renderer -->
+  <rect x="400" y="60" width="260" height="64" rx="8" class="box"/>
+  <text x="420" y="98" class="small">React Renderer</text>
+  <text x="420" y="116" class="note">(react-dom / runtime)</text>
+
+  <!-- Fiber / Reconciliation -->
+  <rect x="760" y="60" width="360" height="120" rx="8" class="box"/>
+  <text x="780" y="92" class="small">Fiber Tree & Reconciliation</text>
+  <text x="780" y="112" class="note">(diffing, keys, priority scheduling)</text>
+  <text x="780" y="128" class="note">(time-slicing in concurrent mode)</text>
+
+  <!-- arrows top -->
+  <path d="M300 92 L400 92" class="arrow" />
+  <path d="M660 92 L760 92" class="arrow" />
+
+  <!-- Render phase box -->
+  <rect x="40" y="200" width="480" height="160" rx="8" class="box"/>
+  <text x="60" y="232" class="small">Render Phase</text>
+  <text x="60" y="252" class="note">- Evaluate components (call functions)</text>
+  <text x="60" y="268" class="note">- Build/compare Fiber nodes</text>
+  <text x="60" y="284" class="note">- Determine insert/update/delete work</text>
+
+  <!-- Commit phase box -->
+  <rect x="640" y="200" width="480" height="160" rx="8" class="box"/>
+  <text x="660" y="232" class="small">Commit Phase</text>
+  <text x="660" y="252" class="note">- Apply minimal DOM mutations</text>
+  <text x="660" y="268" class="note">- Update refs, run useLayoutEffect</text>
+  <text x="660" y="284" class="note">- Browser paint → run useEffect</text>
+
+  <path d="M520 280 L640 280" class="arrow" />
+
+  <!-- Events / Updates -->
+  <rect x="40" y="420" width="260" height="120" rx="8" class="box"/>
+  <text x="60" y="452" class="small">Events / Updates</text>
+  <text x="60" y="472" class="note">(user input, network, setState)</text>
+
+  <path d="M200 380 L200 420" class="arrow" />
+  <path d="M200 540 L200 620" class="arrow" />
+
+  <!-- Scheduler -->
+  <rect x="340" y="420" width="260" height="120" rx="8" class="box"/>
+  <text x="360" y="452" class="small">Scheduler</text>
+  <text x="360" y="472" class="note">(prioritize updates, time-slicing)</text>
+
+  <path d="M600 480 L760 480" class="arrow" />
+
+  <!-- Commit arrow to DOM -->
+  <rect x="760" y="420" width="360" height="120" rx="8" class="box"/>
+  <text x="780" y="452" class="small">Browser DOM</text>
+  <text x="780" y="472" class="note">(actual nodes, paint)</text>
+
+  <!-- Bottom notes -->
+  <text x="40" y="700" class="note">Legend:</text>
+  <text x="40" y="718" class="note">- Virtual DOM: React elements / Fiber (in-memory)</text>
+  <text x="40" y="734" class="note">- Reconciliation: diff old/new trees and compute minimal DOM updates</text>
+  <text x="40" y="750" class="note">- Keys: help React match list items</text>
+
+</svg>
