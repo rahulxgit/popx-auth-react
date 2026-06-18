@@ -20,6 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [authError, setAuthError] = useState("");
   const loginUser = useAuth((state) => state.login);
+  const loginGuest = useAuth((state) => state.loginGuest);
 
   const {
     register,
@@ -52,6 +53,12 @@ const Login = () => {
     }
 
     loginUser(savedUser);
+    navigate("/account");
+  };
+
+  const handleGuest = async () => {
+    // Optionally you can add limited guest metadata here
+    loginGuest({ name: "Guest User" });
     navigate("/account");
   };
 
@@ -112,6 +119,18 @@ const Login = () => {
           >
             {isSubmitting ? "Logging in..." : "Login"}
           </Button>
+
+          {/* Guest mode button */}
+          <Button
+            type="button"
+            className="w-full h-12 text-md mt-2 bg-secondary text-foreground hover:bg-secondary/90 border border-border"
+            onClick={handleGuest}
+            disabled={isSubmitting}
+          >
+            Continue as Guest
+          </Button>
+
+          <p className="text-center text-sm text-muted-foreground mt-2">You can continue as a guest without signing in with Google. Guest accounts are temporary and have limited access.</p>
         </form>
       </motion.div>
     </motion.div>
